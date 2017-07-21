@@ -1,0 +1,45 @@
+  .bdr2{
+        border: 1px solid #00a65a;
+        margin-top: 2px;
+        
+        color:#00a65a;
+     }
+     .bdr2:hover{
+        
+         background-color: #00a65a;
+        color:white;
+        font-weight: bold;
+     }
+     .bdr3{
+        border: 1px solid red;
+        margin-bottom: 2px;
+        color:red;
+        
+     }
+     .bdr3:hover{
+        background-color: red;
+        color:white;
+        font-weight: bold;
+
+     }
+  .bdr5{
+        font-weight: bold;
+        border-radius: 0px;
+        color:#337ab7;
+        margin-top: 15px;
+
+    }
+    .bdr5:hover{
+         font-weight: bold;
+        color:white;
+        background-color: #337ab7;
+
+    }
+.cstmrow {margin: 25px 0px !important;}
+
+.ttl{color:red;}
+.ttlsub{color:red; font-size: 16px;}
+.checkpadd .checkbox-inline{padding-right: 10px !important; margin-top: 10px;}
+.checkpadd1{margin-top: 15px;}
+    
+    

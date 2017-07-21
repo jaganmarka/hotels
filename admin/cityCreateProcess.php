@@ -1,0 +1,25 @@
+<?php 
+include_once "db/connect.php";
+session_start();
+if(isset($_POST['submit'])){
+	$cityName = $_POST['cityName'];
+	$countryId=$_POST['countryId'];
+	$stateId=$_POST['stateId'];
+
+	if(mysql_num_rows(mysql_query("select * from cities where cityName='".$cityName."' and stateId='".$stateId."' and countryId='".$countryId."'"))==0)
+	{   
+		$query = "insert into cities (cityName,countryId,stateId,createdBy) values ('".$cityName."','".$countryId."','".$stateId."','".$_SESSION['userName']."')";
+		$result = mysql_query($query);
+		if($result) {
+			$msg = "<p style='color:green;'>New City Created Successfully</p>";
+			header("Location: cityList.php?msg=".$msg);
+		}else {
+			$msg = "<p style='color:red;'>Error occured while City create</p>";
+			header("Location: cityCreate.php?msg=".$msg);
+		}
+	}else{
+	 $msg = "<p style='color:red;'>City name with <b>".$cityName." </b>is already created</p>";
+	 header("Location: cityCreate.php?msg=".$msg);
+	}
+	
+}
