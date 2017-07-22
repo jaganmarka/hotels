@@ -437,6 +437,14 @@
 				</div>
 				<div class="tab-pane txtdeco" id="warangal">
 					<p class="bang">Hotels in Warangal</p>
+                    <div class="col-lg-12 col-sm-12">
+                        <a href="#"><p>Hotels in Hanamkonda</p></a>
+                        <a href="#"><p>Hotels in Bhalasamudram</p></a>
+                        <a href="#"><p>Hotels in MGM</p></a>
+                        <a href="#"><p>Hotels in Mulugu Road</p></a>
+                        <a href="#"><p>Hotels in Railway Station</p></a>
+
+                    </div>
 				</div>
 			</div>
 		</div>
