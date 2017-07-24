@@ -1,3 +1,2 @@
-# hotel
-
+# hotels
 hotels directory
