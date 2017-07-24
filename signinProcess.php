@@ -1,23 +1,20 @@
 <?php 
 require_once('vendor/autoload.php');
-require_once('conn.php');
+require_once('admin/db/connect.php');
 use \Firebase\JWT\JWT; 
 
 define('SECRET_KEY','Your-Secret-Key');  /// secret key can be a random string and keep in secret from anyone
-define('ALGORITHM','HS512');  // Algorithm used to sign the token, see
-                               https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40#section-3
-//// Suppose you have submitted your form data here with username and password
+define('ALGORITHM','HS512');  // Algorithm used to sign the token
+                               
  $action = $_REQUEST['action'];
 if ($action== 'login' ) {
   
  
                 // if there is no error below code run
-		$statement = $config->prepare("select * from admin where userName = :name" );
-                $statement->execute(array(':name' => $_POST['userName']));
-		$row = $statement->fetchAll(PDO::FETCH_ASSOC);
-                $hashAndSalt = password_hash($password, PASSWORD_BCRYPT);
-		if(count($row)>0 && password_verify($row[0]['password'],$hashAndSalt))
-		{
+$password=sha1($_POST['password']);
+$qury=mysql_query("select * from admin where userName='".$_POST['userName']."' AND password='".$password."'");  
+if(mysql_num_rows($qury)==1){
+$row=mysql_fetch_array($qury);
                     
                     $tokenId    = base64_encode(mcrypt_create_iv(32));
                     $issuedAt   = time();
@@ -36,8 +33,8 @@ if ($action== 'login' ) {
                         'nbf'  => $notBefore,        // Not before
                         'exp'  => $expire,           // Expire
                         'data' => [                  // Data related to the logged user you can set your required data
-				    'id'   => $row[0]['id'], // id from the users table
-				     'name' => $row[0]['userName'], //  name
+				    'id'   => $row['id'], // id from the users table
+				     'name' => $row['userName'], //  name
                                   ]
                     ];
                   $secretKey = base64_decode(SECRET_KEY);

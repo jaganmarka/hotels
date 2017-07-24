@@ -84,11 +84,12 @@
 </body>
 </html>
 <script type="text/javascript">
-/// here is our login form that we are using to post username and password information. 
+/// here is our login form that we are using to post userName and password information. 
 $("#submit").click(function(e){
     //
         e.preventDefault();
         $.post('signinProcess.php?action=login', $("#loginform").serialize(), function(data){
+            alert(data);
             var data = jQuery.parseJSON(data); 
             alert(data);
             document.cookie="tokanVal="+ data['resp']['jwt']; /// you can set returned token in cookie or session and 
