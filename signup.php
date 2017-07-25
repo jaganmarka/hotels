@@ -2,11 +2,11 @@
 /**
  * Created by PhpStorm.
  * User: Jagan Mohan
- * Date: 7/22/2017
- * Time: 3:06 PM
- */
-?>
-<html>
+ * Date: 7/24/2017
+ * Time: 2:19 PM
+ */?>
+
+ <html>
     <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
@@ -34,7 +34,7 @@
         <div class="container-fluid" style="padding-top: 22px;">
             <div class=" col-md-2"></div>
             <div class="col-md-8 text-center">
-        		<h2 class="admn">HOTEL ADMIN LOGIN</h2>
+        		<h2 class="admn">HOTEL SIGNUP</h2>
         	</div>
         	<div class="col-md-2"></div>
         </div>
@@ -47,30 +47,31 @@
 					<div class="col-md-offset-4 col-md-4 col-sm-offset-2 col-sm-8 col-xs-offset-2 col-xs-8  padd0">
                         <div class="panel panel-default panelback">
                             <div class="panel-heading text-center">
-								<h3 class="text-center" style="color:#082fc5;">SIGN IN</h3>
+								<h3 class="text-center" style="color:#082fc5;">SIGN Up</h3>
                             </div>
 
                             <div class="panel-body">
-                                 <form class="formSignin"  method="post" enctype="multipart/form-data" name="loginform" id="loginform">
+                                 <form class="formSignUp"  method="post"  action="signUpProcess.php" enctype="multipart/form-data" name="formSignUp" id="formSignUp">
                                     <fieldset>
                                         <label class="panel-login">
 
                                         </label>
+                                        <input class="form-control" placeholder="Full Name" type="text" name="fullName" id="fullName" required>
                                         <input class="form-control" placeholder="User Name" type="email" name="userName" id="userName" required>
                                         <input class="form-control" placeholder="Password" type="password"  name="password" id="password" required>
+                                        <input class="form-control" placeholder="Phene Number" type="text"  name="phoneNumber" id="phoneNumber" required>
                                         <br>
                                             <center><h5><?php if(isset($_GET['msg'])){echo $_GET['msg'];}  ?></h5></center>
                                         <div class="row text-center">
                                             <div class="col-sm-12 col-md-6 col-xs-12 text-center">
-                                                <a href="forgotPassword.php" class="pull-left forgotstyle">Forgot Password?</a>
+                                                <!-- <a href="forgotPassword.php" class="pull-left forgotstyle">Forgot Password?</a> -->
                                             </div>
                                             <div class="col-sm-12 col-md-6 col-xs-12">
-                                                <input class="btn btn-md btn-style " type="submit" value="Login" name="submit" id="submit">
+                                                <input class="btn btn-md btn-style " type="submit" value="signUp" name="submit" id="submit">
                                             </div>
 
                                         </div>
                                     </fieldset>
-                                    <a class="btn btn-md " id="cookie" >cookie</a>
                                  </form>
                                         <br>
 
@@ -84,42 +85,3 @@
 
 </body>
 </html>
-<script type="text/javascript">
-/// here is our login form that we are using to post userName and password information. 
-$("#submit").click(function(e){
-    //
-        e.preventDefault();
-        $.post('signinProcess.php?action=login', $("#loginform").serialize(), function(data){
-            alert(data);
-            console.log(data);
-            // var data1=data+'"}}';
-            var decodeData = jQuery.parseJSON(data); 
-            alert(decodeData['jwt']);
-            document.cookie='tokanVal='+decodeData['jwt']; /// you can set returned token in cookie or session and 
-                                                                      // can send with each request to authenticate user
-            window.location.reload(true);            
-        });
- 
-    });
-// get your-token-value where you have set it in session , cookie or somewhere and send with each request that you want to authenticate .
-
-$("#cookie").click(function(e){
-e.preventDefault();
-var tokVal = document.cookie;
- //alert(tokVal);
- // console.log(tokVal);
-$.post('signinProcess.php?action=authenticate&tokVal='+tokVal,function(resp)
-        {
-            alert(resp);
-            if (resp.success == true)
-            {
-              alert("success"); /// if token authenticated successfully
-                                //// get your data                     
-            }
-            else
-            {
-              alert("not success");                  /// if token authentication failed
-            }
-        });
-});
-</script>
