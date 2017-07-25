@@ -1,11 +1,5 @@
 <?php
-/*	FACEBOOK LOGIN BASIC - PHP SDK V4.0
- *	file 			- index.php
- * 	Developer 		- Krishna Teja G S
- *	Website			- http://packetcode.com/apps/fblogin-basic/
- *	Date 			- 27th Sept 2014
- *	license			- GNU General Public License version 2 or later
-*/
+
 
 /* INCLUSION OF LIBRARY FILEs*/
 	require_once( 'lib/Facebook/FacebookSession.php');
