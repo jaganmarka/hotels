@@ -40,7 +40,11 @@ $client->setRedirectUri(REDIRECT_URI);
 $client->setScopes('email');
 
 $plus = new Google_Service_Plus($client);
+ $clientGuz = new GuzzleHttp\Client();
+$request = $clientGuz->request('GET',$url, ['verify' => 'C:\xampp\php\extras\ssl\cacert.pem']);
 
+// $client1 = new vendor\GuzzleHttp\Client();
+// $request = $client1->request('GET',$url, ['verify' => false]);
 /*
  * PROCESS
  *
