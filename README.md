@@ -1,2 +1,2 @@
-# hotels pro122
+# hotels
 hotels directory       
