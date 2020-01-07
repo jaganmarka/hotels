@@ -1,2 +1,2 @@
-# hotels
-hotels directory
+# hotels test
+hotels directory 
